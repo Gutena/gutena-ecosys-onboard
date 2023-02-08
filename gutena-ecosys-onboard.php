@@ -90,7 +90,7 @@ if ( ! class_exists( 'Gutena_Ecosys_Onboard' ) && ! class_exists('Gutena_Kit') )
 			$asset_file = include(  __DIR__ . '/build/index.asset.php' );
 
 			wp_enqueue_script( 'gutena-ecosys-onboard', $this->plugin_url . 'build/index.js', $asset_file['dependencies'], $asset_file['version'], true );
-			wp_enqueue_style( 'gutena-ecosys-onboard-style', $this->plugin_url . 'build/index.css', array(), $this->version );
+			wp_enqueue_style( 'gutena-ecosys-onboard-style', $this->plugin_url . 'build/index.css', array(), $asset_file['version'] );
 			//Provide data for form submission script
 			wp_localize_script(
 				'gutena-ecosys-onboard',
