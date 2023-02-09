@@ -3,36 +3,9 @@ import apiFetch from '@wordpress/api-fetch';
 import {
 	InspectorControls
 } from '@wordpress/block-editor';
-import { Icon, Button, PanelBody } from '@wordpress/components';
-import { Fragment, useEffect, useState } from  '@wordpress/element';
+import { useEffect, useState } from  '@wordpress/element';
 import { gutenaEcosysOnboardIsEmpty } from '../helper';
 
-const gutenaIcon = () => (
-	<Icon
-		icon={ () => (
-			<svg
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				color="#ffffff"
-			>
-				<rect
-					x="2.75"
-					y="3.75"
-					width="18.5"
-					height="16.5"
-					stroke="#0EA489"
-					strokeWidth="1.5"
-				/>
-				<rect x="6" y="7" width="12" height="1" fill="#0EA489" />
-				<rect x="6" y="11" width="12" height="1" fill="#0EA489" />
-				<rect x="6" y="15" width="12" height="1" fill="#0EA489" />
-			</svg>
-		) }
-	/>
-);
 
 const GutenaKitInstallCTAPanel = ( { name: blockName } ) => {
 	
@@ -139,7 +112,10 @@ const GutenaKitInstallCTAPanel = ( { name: blockName } ) => {
 			})
 		}).then((response) => response.json()).then((data) => { 	
 			setCtaStatus( 4 );
-		} );
+		} ).catch((error) => {
+			console.error('Error:', error);
+			setCtaStatus( 4 );
+		});
 	}
 
 	 //Get content details
